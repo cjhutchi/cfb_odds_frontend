@@ -24,7 +24,7 @@ export default function Home() {
       {
         games
           .map(game =>
-            <li>{game["away_team"]} @ {game["home_team"]}</li>
+            <li key={Math.random()}>{game["away_team"]} @ {game["home_team"]}</li>
           )
       }
     </div>
