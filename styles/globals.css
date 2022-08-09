@@ -24,3 +24,16 @@ a {
     background: black;
   }
 }
+
+.gamerow {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.favored {
+  font-weight: bold;
+}
+
+.team-logo {
+  width: 50px;
+}
