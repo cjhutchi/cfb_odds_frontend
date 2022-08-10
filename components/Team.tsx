@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Card } from 'antd';
+import Image from 'next/image'
 
 interface TeamProps {
   name: string;
@@ -21,9 +22,11 @@ const Team: FC<TeamProps> = ({ name, points }) => {
         title={Title(name, points)}
         size="small"
       >
-        <img
+        <Image
           className="team-logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg"
+          src={require("/public/logos/" + name + ".svg")}
+          width="50px"
+          height="50px"
         />
       </Card>
     </>

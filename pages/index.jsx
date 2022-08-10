@@ -18,6 +18,7 @@ export default function Home() {
 
   function handleLoad() {
     axios.get('https://blooming-escarpment-27090.herokuapp.com/games/current_week')
+    //axios.get('localhost:3001/games/current_week')
       .then(res => {
         const response = res.data;
         setGames(response["games"]);
