@@ -5,21 +5,28 @@ import Image from 'next/image'
 interface TeamProps {
   name: string;
   points: string;
+  rank: number;
 }
 
-function Title(name, points) {
-  if(points < 0){
-    return <span style={{fontWeight: 'bold'}}>{name + " (" + points + ")"}</span>;
-  } else {
-    return name
+function Title(name, points, rank) {
+  var title = name
+
+  if (points < 0){
+    title = title + " (" + points + ")";
   }
+
+  if (rank != null) {
+    title = rank + " " + title;
+  }
+
+  return title;
 }
 
-const Team: FC<TeamProps> = ({ name, points }) => {
+const Team: FC<TeamProps> = ({ name, points, rank }) => {
   return (
     <>
       <Card
-        title={Title(name, points)}
+        title={Title(name, points, rank)}
         size="small"
       >
         <Image

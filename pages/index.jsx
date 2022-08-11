@@ -18,7 +18,6 @@ export default function Home() {
 
   function handleLoad() {
     axios.get('https://blooming-escarpment-27090.herokuapp.com/games/current_week')
-    //axios.get('localhost:3001/games/current_week')
       .then(res => {
         const response = res.data;
         setGames(response["games"]);
@@ -45,6 +44,7 @@ export default function Home() {
                       <Team
                         name={game["away_team"]}
                         points={game["away_team_points"]}
+                        rank={game["away_team_rank"]}
                       />
                     </Col>
                     <DownOutlined
@@ -54,6 +54,7 @@ export default function Home() {
                       <Team
                         name={game["home_team"]}
                         points={game["home_team_points"]}
+                        rank={game["home_team_rank"]}
                       />
                     </Col>
                   </Row>
