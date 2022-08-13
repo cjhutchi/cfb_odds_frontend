@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <Layout>
       <PageHeader
-        title={"Week " + current_week }
+        title={"AP Top 25 Games: Week " + current_week }
       />
       <Content>
         <div className={styles.container}>
