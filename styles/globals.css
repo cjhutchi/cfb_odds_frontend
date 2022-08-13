@@ -38,6 +38,11 @@ a {
   width: 50px;
 }
 
-.versus {
-  padding-top: 50px;
+.grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

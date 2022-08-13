@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useEffect, useState} from 'react'
 import styles from '../styles/Home.module.css'
 import axios from 'axios';
-import { Col, Row, Layout, PageHeader } from 'antd';
+import { Col, Row, Layout, PageHeader, Divider } from 'antd';
 import { Content, Footer, Header } from 'antd/lib/layout/layout';
 import { DownOutlined } from '@ant-design/icons';
 import Team from '../components/Team'
@@ -25,6 +25,10 @@ export default function Home() {
       })
   };
 
+  function dateAndTime(date) {
+    var date = new Date(date);
+    return date.toDateString() + ", " + date.toLocaleTimeString();
+  }
   return (
     <Layout>
       <PageHeader
@@ -36,21 +40,26 @@ export default function Home() {
             games
               .map(game =>
                 <>
+                  <Divider plain>
+                    {dateAndTime(game["commence_time"])}
+                  </Divider>
                   <Row
                     gutter={16}
                     className="gamerow"
                   >
-                    <Col span={11}>
+                    <Col lg={11} md={11} sm={24} xs={24} xxs={24}>
                       <Team
                         name={game["away_team"]}
                         points={game["away_team_points"]}
                         rank={game["away_team_rank"]}
                       />
                     </Col>
-                    <DownOutlined
-                      className="versus"
-                    />
-                    <Col span={11}>
+                    <div className="grid-item">
+                      <Col lg={2} md={2} sm={24} xs={24} xxs={24}>
+                        <DownOutlined />
+                      </Col>
+                    </div>
+                    <Col lg={11} md={11} sm={24} xs={24} xxs={24}>
                       <Team
                         name={game["home_team"]}
                         points={game["home_team_points"]}
