@@ -36,6 +36,10 @@ a {
 
 .team-logo {
   width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
 .grid-item {

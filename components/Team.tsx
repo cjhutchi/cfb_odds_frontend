@@ -29,12 +29,13 @@ const Team: FC<TeamProps> = ({ name, points, rank }) => {
         title={Title(name, points, rank)}
         size="small"
       >
-        <Image
-          className="team-logo"
-          src={require("/public/logos/" + name + ".svg")}
-          width="50px"
-          height="50px"
-        />
+        <div className="team-logo">
+          <Image
+            src={require("/public/logos/" + name + ".svg")}
+            width="50px"
+            height="50px"
+          />
+        </div>
       </Card>
     </>
   );
