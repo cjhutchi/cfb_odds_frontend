@@ -1,12 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect, useState} from 'react'
+import { useEffect, useState, Link} from 'react'
 import styles from '../styles/Home.module.css'
 import axios from 'axios';
 import { Col, Row, Layout, PageHeader, Divider } from 'antd';
 import { Content, Footer, Header } from 'antd/lib/layout/layout';
 import { DownOutlined } from '@ant-design/icons';
 import Team from '../components/Team'
+import { faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 export default function Home() {
   const [games, setGames] = useState([]);
@@ -27,7 +30,8 @@ export default function Home() {
 
   function dateAndTime(date) {
     var date = new Date(date);
-    return date.toDateString() + ", " + date.toLocaleTimeString();
+    var time = date.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}).replace(/^(?:00:)?0?/, '');
+    return date.toDateString() + ", " + time;
   }
   return (
     <Layout>
@@ -72,8 +76,23 @@ export default function Home() {
           }
         </div>
       </Content>
-      <Footer>
+      <Footer
+        style={{
+          textAlign: 'center',
+          background: 'black',
+          color: 'white'
+        }}
+      >
+        <div className="socials">
+          <a href="https://github.com/cjhutchi" targe="_blank" className="social-link">
+            <FontAwesomeIcon icon={faGithub} className="fa-2xl" />
+          </a>
+          <a href="https://www.linkedin.com/in/chutchinson252/" targe="_blank" className="social-link">
+            <FontAwesomeIcon icon={faLinkedin} className="fa-2xl" />
+          </a>
+        </div>
 
+        Created by Chris Hutchinson, ⓒ {new Date().getFullYear()}
       </Footer>
     </Layout>
   )

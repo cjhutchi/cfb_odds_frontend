@@ -50,3 +50,12 @@ a {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.socials {
+  padding: 10px;
+}
+
+.social-link {
+  color: white;
+  padding: 10px;
+}
