@@ -1,15 +1,11 @@
-import { Head, GeneralHead } from 'next/head'
-import Image from 'next/image'
-import { useEffect, useState, Link} from 'react'
-import styles from '../styles/Home.module.css'
+import { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Col, Row, Layout, PageHeader, Divider } from 'antd';
-import { Content, Footer, Header } from 'antd/lib/layout/layout';
-import { DownOutlined } from '@ant-design/icons';
-import Team from '../components/Team'
+import { Layout, PageHeader } from 'antd';
+import { Content, Footer } from 'antd/lib/layout/layout';
 import { faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NextSeo } from 'next-seo';
+import GamesRepeater from '../components/GamesRepeater'
 
 
 export default function Home() {
@@ -29,11 +25,6 @@ export default function Home() {
       })
   };
 
-  function dateAndTime(date) {
-    var date = new Date(date);
-    var time = date.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}).replace(/^(?:00:)?0?/, '');
-    return date.toDateString() + ", " + time;
-  }
   return (
     <>
       <NextSeo
@@ -60,44 +51,17 @@ export default function Home() {
         <PageHeader
           title={"AP Top 25 Games: Week " + current_week }
         />
-        <Content>
-          <div className={styles.container}>
-            {
-              games
-                .map(game =>
-                  <>
-                    <Divider plain>
-                      {dateAndTime(game["commence_time"])}
-                    </Divider>
-                    <Row
-                      gutter={16}
-                      className="gamerow"
-                    >
-                      <Col lg={11} md={11} sm={24} xs={24} xxs={24}>
-                        <Team
-                          name={game["away_team"]}
-                          points={game["away_team_points"]}
-                          rank={game["away_team_rank"]}
-                        />
-                      </Col>
-                      <div className="grid-item">
-                        <Col lg={2} md={2} sm={24} xs={24} xxs={24}>
-                          <DownOutlined />
-                        </Col>
-                      </div>
-                      <Col lg={11} md={11} sm={24} xs={24} xxs={24}>
-                        <Team
-                          name={game["home_team"]}
-                          points={game["home_team_points"]}
-                          rank={game["home_team_rank"]}
-                        />
-                      </Col>
-                    </Row>
-                  </>
-                )
-            }
-          </div>
+
+        <Content
+          style={{
+            paddingBottom: "50px"
+          }}
+        >
+          <GamesRepeater
+            games={games}
+          />
         </Content>
+
         <Footer
           style={{
             textAlign: 'center',
