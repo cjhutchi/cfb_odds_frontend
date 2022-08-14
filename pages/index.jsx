@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { Head, GeneralHead } from 'next/head'
 import Image from 'next/image'
 import { useEffect, useState, Link} from 'react'
 import styles from '../styles/Home.module.css'
@@ -9,6 +9,7 @@ import { DownOutlined } from '@ant-design/icons';
 import Team from '../components/Team'
 import { faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { NextSeo } from 'next-seo';
 
 
 export default function Home() {
@@ -34,19 +35,27 @@ export default function Home() {
     return date.toDateString() + ", " + time;
   }
   return (
-    <html>
-      <Head key="header">
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content={content.acf.excerpt} />
-        <meta charSet="utf-8" />
-
-        <GeneralHead
-          description="View the spreads for the current week"
-          ogUrl={currentURL}
-          ogImage="https://static4.depositphotos.com/1016418/369/i/600/depositphotos_3693729-stock-photo-closeup-of-american-football-on.jpg"
-          ogTitle="AP Top 25 Spreads"
-        />
-      </Head>
+    <>
+      <NextSeo
+        title="College Football Spreads"
+        description="Get the spreads for this week's college football games"
+        canonical="https://cfboddsfrontend.herokuapp.com/"
+        openGraph={{
+          url: 'https://cfboddsfrontend.herokuapp.com/',
+          title: 'College Football Spreads',
+          description: 'Get the spreads for this week\'s college football games',
+          images: [
+            {
+              url: 'https://static4.depositphotos.com/1016418/369/i/600/depositphotos_3693729-stock-photo-closeup-of-american-football-on.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            }
+          ],
+          site_name: 'CFBSpreads',
+        }}
+      />
       <Layout>
         <PageHeader
           title={"AP Top 25 Games: Week " + current_week }
@@ -108,6 +117,6 @@ export default function Home() {
           Created by Chris Hutchinson, ⓒ {new Date().getFullYear()}
         </Footer>
       </Layout>
-    </html>
+    </>
   )
 }
