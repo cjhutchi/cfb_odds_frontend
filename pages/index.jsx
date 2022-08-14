@@ -34,66 +34,80 @@ export default function Home() {
     return date.toDateString() + ", " + time;
   }
   return (
-    <Layout>
-      <PageHeader
-        title={"AP Top 25 Games: Week " + current_week }
-      />
-      <Content>
-        <div className={styles.container}>
-          {
-            games
-              .map(game =>
-                <>
-                  <Divider plain>
-                    {dateAndTime(game["commence_time"])}
-                  </Divider>
-                  <Row
-                    gutter={16}
-                    className="gamerow"
-                  >
-                    <Col lg={11} md={11} sm={24} xs={24} xxs={24}>
-                      <Team
-                        name={game["away_team"]}
-                        points={game["away_team_points"]}
-                        rank={game["away_team_rank"]}
-                      />
-                    </Col>
-                    <div className="grid-item">
-                      <Col lg={2} md={2} sm={24} xs={24} xxs={24}>
-                        <DownOutlined />
-                      </Col>
-                    </div>
-                    <Col lg={11} md={11} sm={24} xs={24} xxs={24}>
-                      <Team
-                        name={game["home_team"]}
-                        points={game["home_team_points"]}
-                        rank={game["home_team_rank"]}
-                      />
-                    </Col>
-                  </Row>
-                </>
-              )
-          }
-        </div>
-      </Content>
-      <Footer
-        style={{
-          textAlign: 'center',
-          background: 'black',
-          color: 'white'
-        }}
-      >
-        <div className="socials">
-          <a href="https://github.com/cjhutchi" targe="_blank" className="social-link">
-            <FontAwesomeIcon icon={faGithub} className="fa-2xl" />
-          </a>
-          <a href="https://www.linkedin.com/in/chutchinson252/" targe="_blank" className="social-link">
-            <FontAwesomeIcon icon={faLinkedin} className="fa-2xl" />
-          </a>
-        </div>
+    <html>
+      <Head key="header">
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content={content.acf.excerpt} />
+        <meta charSet="utf-8" />
 
-        Created by Chris Hutchinson, ⓒ {new Date().getFullYear()}
-      </Footer>
-    </Layout>
+        <GeneralHead
+          description="View the spreads for the current week"
+          ogUrl={currentURL}
+          ogImage="https://static4.depositphotos.com/1016418/369/i/600/depositphotos_3693729-stock-photo-closeup-of-american-football-on.jpg"
+          ogTitle="AP Top 25 Spreads"
+        />
+      </Head>
+      <Layout>
+        <PageHeader
+          title={"AP Top 25 Games: Week " + current_week }
+        />
+        <Content>
+          <div className={styles.container}>
+            {
+              games
+                .map(game =>
+                  <>
+                    <Divider plain>
+                      {dateAndTime(game["commence_time"])}
+                    </Divider>
+                    <Row
+                      gutter={16}
+                      className="gamerow"
+                    >
+                      <Col lg={11} md={11} sm={24} xs={24} xxs={24}>
+                        <Team
+                          name={game["away_team"]}
+                          points={game["away_team_points"]}
+                          rank={game["away_team_rank"]}
+                        />
+                      </Col>
+                      <div className="grid-item">
+                        <Col lg={2} md={2} sm={24} xs={24} xxs={24}>
+                          <DownOutlined />
+                        </Col>
+                      </div>
+                      <Col lg={11} md={11} sm={24} xs={24} xxs={24}>
+                        <Team
+                          name={game["home_team"]}
+                          points={game["home_team_points"]}
+                          rank={game["home_team_rank"]}
+                        />
+                      </Col>
+                    </Row>
+                  </>
+                )
+            }
+          </div>
+        </Content>
+        <Footer
+          style={{
+            textAlign: 'center',
+            background: 'black',
+            color: 'white'
+          }}
+        >
+          <div className="socials">
+            <a href="https://github.com/cjhutchi" targe="_blank" className="social-link">
+              <FontAwesomeIcon icon={faGithub} className="fa-2xl" />
+            </a>
+            <a href="https://www.linkedin.com/in/chutchinson252/" targe="_blank" className="social-link">
+              <FontAwesomeIcon icon={faLinkedin} className="fa-2xl" />
+            </a>
+          </div>
+
+          Created by Chris Hutchinson, ⓒ {new Date().getFullYear()}
+        </Footer>
+      </Layout>
+    </html>
   )
 }
