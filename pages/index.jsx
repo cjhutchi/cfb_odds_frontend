@@ -82,7 +82,8 @@ export default function Home() {
           style={{
             textAlign: 'center',
             background: 'black',
-            color: 'white'
+            color: 'white',
+            display: busy ? 'none' : 'block'
           }}
         >
           <div className="socials">
