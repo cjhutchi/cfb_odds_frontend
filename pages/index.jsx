@@ -6,11 +6,12 @@ import { faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NextSeo } from 'next-seo';
 import GamesRepeater from '../components/GamesRepeater'
-
+import { TailSpin } from  'react-loader-spinner'
 
 export default function Home() {
   const [games, setGames] = useState([]);
   const [current_week, setCurrentWeek] = useState(0);
+  const [busy, setBusy] = useState(true);
 
   useEffect(() => {
     handleLoad();
@@ -22,6 +23,7 @@ export default function Home() {
         const response = res.data;
         setGames(response["games"]);
         setCurrentWeek(response["current_week"]);
+        setBusy(false);
       })
   };
 
@@ -48,16 +50,30 @@ export default function Home() {
         }}
       />
       <Layout>
+        <div
+          style={{
+            margin: "auto"
+          }}
+        >
+          <TailSpin
+            visible={busy}
+            color="black"
+          />
+        </div>
         <PageHeader
           title={"AP Top 25 Games: Week " + current_week }
+          style={{
+            display: busy ? 'none': 'block'
+          }}
         />
 
         <Content
           style={{
-            paddingBottom: "50px"
+            paddingBottom: "50px",
           }}
         >
           <GamesRepeater
+            visible={!busy}
             games={games}
           />
         </Content>
