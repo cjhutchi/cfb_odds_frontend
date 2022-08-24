@@ -38,16 +38,7 @@ const Game: FC<GameProps> = ({
         gutter={16}
         className="gamerow"
       >
-        <Col
-          lg={11}
-          md={11}
-          sm={24}
-          xs={24}
-          style={{
-            paddingLeft: "0px",
-            paddingRight: "0px"
-          }}
-        >
+        <Col lg={11} md={11} sm={24} xs={24}>
           <Team
             name={away_team}
             points={away_team_points}
@@ -55,16 +46,7 @@ const Game: FC<GameProps> = ({
           />
         </Col>
         <div className="grid-item">
-          <Col
-            lg={2}
-            md={2}
-            sm={24}
-            xs={24}
-            style={{
-              paddingLeft: "0px",
-              paddingRight: "0px"
-            }}
-          >
+          <Col lg={2} md={2} sm={24} xs={24}>
             @
           </Col>
         </div>
